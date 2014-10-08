@@ -56,8 +56,8 @@ public class UpdateByExampleParmsInnerclassGenerator extends
         method.addParameter(new Parameter(FullyQualifiedJavaType
                 .getObjectInstance(), "record")); //$NON-NLS-1$
         method.addParameter(new Parameter(new FullyQualifiedJavaType(
-                introspectedTable.getExampleType()), "example")); //$NON-NLS-1$
-        method.addBodyLine("super(example);"); //$NON-NLS-1$
+                introspectedTable.getExampleType()), "criteria")); //$NON-NLS-1$
+        method.addBodyLine("super(criteria);"); //$NON-NLS-1$
         method.addBodyLine("this.record = record;"); //$NON-NLS-1$
         innerClass.addMethod(method);
 

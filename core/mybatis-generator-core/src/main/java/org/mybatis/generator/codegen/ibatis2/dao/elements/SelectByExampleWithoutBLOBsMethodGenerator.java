@@ -56,7 +56,7 @@ public class SelectByExampleWithoutBLOBsMethodGenerator extends
         sb.append(" list = "); //$NON-NLS-1$
         sb.append(daoTemplate.getQueryForListMethod(introspectedTable
                 .getIbatis2SqlMapNamespace(), introspectedTable
-                .getSelectByExampleStatementId(), "example")); //$NON-NLS-1$
+                .getSelectByExampleStatementId(), "criteria")); //$NON-NLS-1$
         method.addBodyLine(sb.toString());
         method.addBodyLine("return list;"); //$NON-NLS-1$
 
@@ -115,7 +115,7 @@ public class SelectByExampleWithoutBLOBsMethodGenerator extends
 
         method.setName(getDAOMethodNameCalculator()
                 .getSelectByExampleWithoutBLOBsMethodName(introspectedTable));
-        method.addParameter(new Parameter(type, "example")); //$NON-NLS-1$
+        method.addParameter(new Parameter(type, "criteria")); //$NON-NLS-1$
 
         for (FullyQualifiedJavaType fqjt : daoTemplate.getCheckedExceptions()) {
             method.addException(fqjt);

@@ -73,7 +73,7 @@ public class ProviderUpdateByExampleSelectiveMethodGenerator extends
         FullyQualifiedJavaType example =
             new FullyQualifiedJavaType(introspectedTable.getExampleType());
         importedTypes.add(example);
-        method.addBodyLine(String.format("%s example = (%s) parameter.get(\"example\");", //$NON-NLS-1$
+        method.addBodyLine(String.format("%s criteria = (%s) parameter.get(\"criteria\");", //$NON-NLS-1$
                 example.getShortName(), example.getShortName()));
 
         context.getCommentGenerator().addGeneralMethodComment(method,
@@ -116,10 +116,10 @@ public class ProviderUpdateByExampleSelectiveMethodGenerator extends
         }
         
         if (useLegacyBuilder) {
-        	method.addBodyLine("applyWhere(example, true);"); //$NON-NLS-1$
+        	method.addBodyLine("applyWhere(criteria, true);"); //$NON-NLS-1$
         	method.addBodyLine("return SQL();"); //$NON-NLS-1$
         } else {
-        	method.addBodyLine("applyWhere(sql, example, true);"); //$NON-NLS-1$
+        	method.addBodyLine("applyWhere(sql, criteria, true);"); //$NON-NLS-1$
         	method.addBodyLine("return sql.toString();"); //$NON-NLS-1$
         }
         

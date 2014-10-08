@@ -50,7 +50,7 @@ public class UpdateByExampleSelectiveMethodGenerator extends
         FullyQualifiedJavaType exampleType = new FullyQualifiedJavaType(
                 introspectedTable.getExampleType());
         method.addParameter(new Parameter(exampleType,
-                "example", "@Param(\"example\")")); //$NON-NLS-1$ //$NON-NLS-2$
+                "criteria", "@Param(\"criteria\")")); //$NON-NLS-1$ //$NON-NLS-2$
         importedTypes.add(exampleType);
 
         importedTypes.add(new FullyQualifiedJavaType(

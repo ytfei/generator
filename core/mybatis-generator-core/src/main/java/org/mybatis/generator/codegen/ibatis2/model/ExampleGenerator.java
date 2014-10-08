@@ -91,10 +91,10 @@ public class ExampleGenerator extends AbstractJavaGenerator {
             method.setVisibility(JavaVisibility.PROTECTED);
             method.setConstructor(true);
             method.setName(type.getShortName());
-            method.addParameter(new Parameter(type, "example")); //$NON-NLS-1$
-            method.addBodyLine("this.orderByClause = example.orderByClause;"); //$NON-NLS-1$
-            method.addBodyLine("this.oredCriteria = example.oredCriteria;"); //$NON-NLS-1$
-            method.addBodyLine("this.distinct = example.distinct;"); //$NON-NLS-1$
+            method.addParameter(new Parameter(type, "criteria")); //$NON-NLS-1$
+            method.addBodyLine("this.orderByClause = criteria.orderByClause;"); //$NON-NLS-1$
+            method.addBodyLine("this.oredCriteria = criteria.oredCriteria;"); //$NON-NLS-1$
+            method.addBodyLine("this.distinct = criteria.distinct;"); //$NON-NLS-1$
             commentGenerator.addGeneralMethodComment(method, introspectedTable);
             topLevelClass.addMethod(method);
         }

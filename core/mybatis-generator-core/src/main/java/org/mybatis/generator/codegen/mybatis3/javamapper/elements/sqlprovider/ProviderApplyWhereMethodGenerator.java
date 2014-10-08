@@ -28,7 +28,7 @@ public class ProviderApplyWhereMethodGenerator extends
         AbstractJavaProviderMethodGenerator {
 
     private static final String[] BEGINNING_METHOD_LINES = {
-        "if (example == null) {", //$NON-NLS-1$
+        "if (criteria == null) {", //$NON-NLS-1$
         "return;", //$NON-NLS-1$
         "}", //$NON-NLS-1$
         "", //$NON-NLS-1$
@@ -39,12 +39,12 @@ public class ProviderApplyWhereMethodGenerator extends
         "String parmPhrase3;", //$NON-NLS-1$
         "String parmPhrase3_th;", //$NON-NLS-1$
         "if (includeExamplePhrase) {", //$NON-NLS-1$
-        "parmPhrase1 = \"%s #{example.oredCriteria[%d].allCriteria[%d].value}\";", //$NON-NLS-1$
-        "parmPhrase1_th = \"%s #{example.oredCriteria[%d].allCriteria[%d].value,typeHandler=%s}\";", //$NON-NLS-1$
-        "parmPhrase2 = \"%s #{example.oredCriteria[%d].allCriteria[%d].value} and #{example.oredCriteria[%d].criteria[%d].secondValue}\";", //$NON-NLS-1$
-        "parmPhrase2_th = \"%s #{example.oredCriteria[%d].allCriteria[%d].value,typeHandler=%s} and #{example.oredCriteria[%d].criteria[%d].secondValue,typeHandler=%s}\";", //$NON-NLS-1$
-        "parmPhrase3 = \"#{example.oredCriteria[%d].allCriteria[%d].value[%d]}\";", //$NON-NLS-1$
-        "parmPhrase3_th = \"#{example.oredCriteria[%d].allCriteria[%d].value[%d],typeHandler=%s}\";", //$NON-NLS-1$
+        "parmPhrase1 = \"%s #{criteria.oredCriteria[%d].allCriteria[%d].value}\";", //$NON-NLS-1$
+        "parmPhrase1_th = \"%s #{criteria.oredCriteria[%d].allCriteria[%d].value,typeHandler=%s}\";", //$NON-NLS-1$
+        "parmPhrase2 = \"%s #{criteria.oredCriteria[%d].allCriteria[%d].value} and #{criteria.oredCriteria[%d].criteria[%d].secondValue}\";", //$NON-NLS-1$
+        "parmPhrase2_th = \"%s #{criteria.oredCriteria[%d].allCriteria[%d].value,typeHandler=%s} and #{criteria.oredCriteria[%d].criteria[%d].secondValue,typeHandler=%s}\";", //$NON-NLS-1$
+        "parmPhrase3 = \"#{criteria.oredCriteria[%d].allCriteria[%d].value[%d]}\";", //$NON-NLS-1$
+        "parmPhrase3_th = \"#{criteria.oredCriteria[%d].allCriteria[%d].value[%d],typeHandler=%s}\";", //$NON-NLS-1$
         "} else {", //$NON-NLS-1$
         "parmPhrase1 = \"%s #{oredCriteria[%d].allCriteria[%d].value}\";", //$NON-NLS-1$
         "parmPhrase1_th = \"%s #{oredCriteria[%d].allCriteria[%d].value,typeHandler=%s}\";", //$NON-NLS-1$
@@ -55,7 +55,7 @@ public class ProviderApplyWhereMethodGenerator extends
         "}", //$NON-NLS-1$
         "", //$NON-NLS-1$
         "StringBuilder sb = new StringBuilder();", //$NON-NLS-1$
-        "List<Criteria> oredCriteria = example.getOredCriteria();", //$NON-NLS-1$
+        "List<Criteria> oredCriteria = criteria.getOredCriteria();", //$NON-NLS-1$
         "boolean firstCriteria = true;", //$NON-NLS-1$
         "for (int i = 0; i < oredCriteria.size(); i++) {", //$NON-NLS-1$
         "Criteria criteria = oredCriteria.get(i);", //$NON-NLS-1$
@@ -159,7 +159,7 @@ public class ProviderApplyWhereMethodGenerator extends
         if (!useLegacyBuilder) {
             method.addParameter(new Parameter(NEW_BUILDER_IMPORT, "sql")); //$NON-NLS-1$
         }
-        method.addParameter(new Parameter(fqjt, "example")); //$NON-NLS-1$
+        method.addParameter(new Parameter(fqjt, "criteria")); //$NON-NLS-1$
         method.addParameter(new Parameter(FullyQualifiedJavaType.getBooleanPrimitiveInstance(), "includeExamplePhrase")); //$NON-NLS-1$
         
         context.getCommentGenerator().addGeneralMethodComment(method,

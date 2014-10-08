@@ -50,7 +50,7 @@ public class CountByExampleMethodGenerator extends AbstractDAOElementGenerator {
         sb.append("Integer count = (Integer)  "); //$NON-NLS-1$
         sb.append(daoTemplate.getQueryForObjectMethod(introspectedTable
                 .getIbatis2SqlMapNamespace(), introspectedTable
-                .getCountByExampleStatementId(), "example")); //$NON-NLS-1$
+                .getCountByExampleStatementId(), "criteria")); //$NON-NLS-1$
         method.addBodyLine(sb.toString());
 
         if (generateForJava5) {
@@ -90,7 +90,7 @@ public class CountByExampleMethodGenerator extends AbstractDAOElementGenerator {
         method.setReturnType(FullyQualifiedJavaType.getIntInstance());
         method.setName(getDAOMethodNameCalculator()
                 .getCountByExampleMethodName(introspectedTable));
-        method.addParameter(new Parameter(type, "example")); //$NON-NLS-1$
+        method.addParameter(new Parameter(type, "criteria")); //$NON-NLS-1$
 
         for (FullyQualifiedJavaType fqjt : daoTemplate.getCheckedExceptions()) {
             method.addException(fqjt);

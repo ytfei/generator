@@ -45,7 +45,7 @@ public class DeleteByExampleMethodGenerator extends AbstractDAOElementGenerator 
         sb.append("int rows = "); //$NON-NLS-1$
         sb.append(daoTemplate.getDeleteMethod(introspectedTable
                 .getIbatis2SqlMapNamespace(), introspectedTable
-                .getDeleteByExampleStatementId(), "example")); //$NON-NLS-1$
+                .getDeleteByExampleStatementId(), "criteria")); //$NON-NLS-1$
         method.addBodyLine(sb.toString());
         method.addBodyLine("return rows;"); //$NON-NLS-1$
 
@@ -80,7 +80,7 @@ public class DeleteByExampleMethodGenerator extends AbstractDAOElementGenerator 
         method.setReturnType(FullyQualifiedJavaType.getIntInstance());
         method.setName(getDAOMethodNameCalculator()
                 .getDeleteByExampleMethodName(introspectedTable));
-        method.addParameter(new Parameter(type, "example")); //$NON-NLS-1$
+        method.addParameter(new Parameter(type, "criteria")); //$NON-NLS-1$
 
         for (FullyQualifiedJavaType fqjt : daoTemplate.getCheckedExceptions()) {
             method.addException(fqjt);
