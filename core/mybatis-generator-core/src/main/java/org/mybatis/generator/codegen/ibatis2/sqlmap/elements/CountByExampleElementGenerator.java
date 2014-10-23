@@ -43,9 +43,7 @@ public class CountByExampleElementGenerator extends AbstractXmlElementGenerator 
         context.getCommentGenerator().addComment(answer);
 
         StringBuilder sb = new StringBuilder();
-        sb.append("select count(*) from "); //$NON-NLS-1$
-        sb.append(introspectedTable
-                .getAliasedFullyQualifiedTableNameAtRuntime());
+        sb.append("  ${tableName}"); // introspectedTable.getAliasedFullyQualifiedTableNameAtRuntime()
         answer.addElement(new TextElement(sb.toString()));
 
         XmlElement includeElement = new XmlElement("include"); //$NON-NLS-1$

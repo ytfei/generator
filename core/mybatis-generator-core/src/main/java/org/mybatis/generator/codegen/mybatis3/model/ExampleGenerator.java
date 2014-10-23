@@ -68,12 +68,42 @@ public class ExampleGenerator extends AbstractJavaGenerator {
         method.setConstructor(true);
         method.setName(type.getShortName());
         method.addBodyLine("oredCriteria = new ArrayList<Criteria>();"); //$NON-NLS-1$
+        method.addBodyLine(String.format("tableName = \"%s\";",
+                introspectedTable.getAliasedFullyQualifiedTableNameAtRuntime())); //$NON-NLS-1$
 
         commentGenerator.addGeneralMethodComment(method, introspectedTable);
         topLevelClass.addMethod(method);
 
         // add field, getter, setter for orderby clause
+
+        // add table name field
         Field field = new Field();
+        field.setVisibility(JavaVisibility.PROTECTED);
+        field.setType(FullyQualifiedJavaType.getStringInstance());
+        field.setName("tableName"); //$NON-NLS-1$
+        commentGenerator.addFieldComment(field, introspectedTable);
+        topLevelClass.addField(field);
+
+        method = new Method();
+        method.setVisibility(JavaVisibility.PUBLIC);
+        method.setName("setTableName"); //$NON-NLS-1$
+        method.addParameter(new Parameter(FullyQualifiedJavaType
+                .getStringInstance(), "tableName")); //$NON-NLS-1$
+        method.addBodyLine("this.tableName = tableName;"); //$NON-NLS-1$
+        commentGenerator.addGeneralMethodComment(method, introspectedTable);
+        topLevelClass.addMethod(method);
+
+        method = new Method();
+        method.setVisibility(JavaVisibility.PUBLIC);
+        method.setReturnType(FullyQualifiedJavaType.getStringInstance());
+        method.setName("getTableName"); //$NON-NLS-1$
+        method.addBodyLine("return this.tableName;"); //$NON-NLS-1$
+        commentGenerator.addGeneralMethodComment(method, introspectedTable);
+        topLevelClass.addMethod(method);
+
+        // ---------------
+
+        field = new Field();
         field.setVisibility(JavaVisibility.PROTECTED);
         field.setType(FullyQualifiedJavaType.getStringInstance());
         field.setName("orderByClause"); //$NON-NLS-1$

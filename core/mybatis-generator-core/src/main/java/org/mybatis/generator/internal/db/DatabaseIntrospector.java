@@ -53,7 +53,7 @@ import org.mybatis.generator.logging.Log;
 import org.mybatis.generator.logging.LogFactory;
 
 /**
- * 
+ *
  * @author Jeff Butler
  */
 public class DatabaseIntrospector {
@@ -98,7 +98,7 @@ public class DatabaseIntrospector {
                 short keySeq = rs.getShort("KEY_SEQ"); //$NON-NLS-1$
                 keyColumns.put(keySeq, columnName);
             }
-            
+
             for (String columnName : keyColumns.values()) {
                 introspectedTable.addPrimaryKeyColumn(columnName);
             }
@@ -115,7 +115,6 @@ public class DatabaseIntrospector {
                 rs.close();
             } catch (SQLException e) {
                 // ignore
-                ;
             }
         }
     }
@@ -151,7 +150,7 @@ public class DatabaseIntrospector {
                         generatedKey.getColumn(), table.toString()));
             }
         }
-        
+
         for (IntrospectedColumn ic : introspectedTable.getAllColumns()) {
             if (JavaReservedWords.containsWord(ic.getJavaProperty())) {
                 warnings.add(getString("Warning.26", //$NON-NLS-1$
@@ -163,7 +162,7 @@ public class DatabaseIntrospector {
     /**
      * Returns a List<IntrospectedTable> that matches the specified table
      * configuration.
-     * 
+     *
      * @param tc
      * @return a list of introspected tables
      * @throws SQLException
@@ -207,7 +206,7 @@ public class DatabaseIntrospector {
                 // add warning that the table has only BLOB columns, remove from
                 // the list
                 String warning = getString(
-                                "Warning.18", introspectedTable.getFullyQualifiedTable().toString()); //$NON-NLS-1$ 
+                                "Warning.18", introspectedTable.getFullyQualifiedTable().toString()); //$NON-NLS-1$
                 warnings.add(warning);
                 iter.remove();
             } else {
@@ -353,7 +352,7 @@ public class DatabaseIntrospector {
             // no generated key, then no identity or sequence columns
             return;
         }
-        
+
         for (Map.Entry<ActualTableName, List<IntrospectedColumn>> entry : columns
                 .entrySet()) {
             for (IntrospectedColumn introspectedColumn : entry.getValue()) {
@@ -369,7 +368,7 @@ public class DatabaseIntrospector {
             }
         }
     }
-    
+
     private boolean isMatchedColumn(IntrospectedColumn introspectedColumn, GeneratedKey gk) {
         if (introspectedColumn.isColumnNameDelimited()) {
             return introspectedColumn.getActualColumnName().equals(gk.getColumn());
@@ -433,7 +432,7 @@ public class DatabaseIntrospector {
     /**
      * This method returns a Map<ActualTableName, List<ColumnDefinitions>> of
      * columns returned from the database introspection.
-     * 
+     *
      * @param tc
      * @return introspected columns
      * @throws SQLException

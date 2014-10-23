@@ -24,9 +24,9 @@ import org.mybatis.generator.api.dom.xml.XmlElement;
 import org.mybatis.generator.codegen.mybatis3.MyBatis3FormattingUtilities;
 
 /**
- * 
+ *
  * @author Jeff Butler
- * 
+ *
  */
 public class SelectByPrimaryKeyElementGenerator extends
         AbstractXmlElementGenerator {

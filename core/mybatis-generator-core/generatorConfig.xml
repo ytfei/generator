@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+			<classPathEntry
+            location="/home/evans/.m2/repository/mysql/mysql-connector-java/5.0.5/mysql-connector-java-5.0.5.jar"/>
+
+    <context id="loansystem" targetRuntime="MyBatis3">
+
+        <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+            <property name="searchString" value="Example$"/>
+            <property name="replaceString" value="Criteria"/>
+        </plugin>
+
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"/>
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <!--<plugin type="org.mybatis.generator.plugins.CachePlugin">-->
+        <!--<property name="enableSubPackages" value="true"/>-->
+        <!--</plugin>-->
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://192.168.2.223:3306/loansystem"
+                        userId="root"
+                        password="zufangbao">
+        </jdbcConnection>
+
+        <!--
+            NOTE: When targetProject is set to "MAVEN", the default output is target/generated-sources/mybatis-generator
+        -->
+
+        <javaModelGenerator targetPackage="demo" targetProject="./output"><!-- src/generated/java -->
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="demo"
+                         targetProject="./output"> <!-- src/generated/resources -->
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER" targetPackage="demo"
+                             targetProject="./output"> <!-- src/generated/java -->
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table schema="loansystem" tableName="loan_order" domainObjectName="LoanOrder">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+            <!--
+            <property name="useActualColumnNames" value="true"/>
+            <generatedKey column="ID" sqlStatement="MySQL" identity="true" />
+            <columnOverride column="DATE_FIELD" property="startDate" />
+            <ignoreColumn column="FRED" />
+            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />
+            -->
+        </table>
+
+    </context>
+
+    <!--<context id="extmail" targetRuntime="MyBatis3">-->
+
+    <!--<plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">-->
+    <!--<property name="searchString" value="Example$"/>-->
+    <!--<property name="replaceString" value="Criteria"/>-->
+    <!--</plugin>-->
+
+    <!--<plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"/>-->
+    <!--<plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>-->
+    <!--<plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>-->
+    <!--&lt;!&ndash;<plugin type="org.mybatis.generator.plugins.CachePlugin">&ndash;&gt;-->
+    <!--&lt;!&ndash;<property name="enableSubPackages" value="true"/>&ndash;&gt;-->
+    <!--&lt;!&ndash;</plugin>&ndash;&gt;-->
+
+    <!--<jdbcConnection driverClass="com.mysql.jdbc.Driver"-->
+    <!--connectionURL="jdbc:mysql://192.168.2.223:3306/loansystem"-->
+    <!--userId="root"-->
+    <!--password="zufangbao">-->
+    <!--</jdbcConnection>-->
+
+    <!--&lt;!&ndash;-->
+    <!--NOTE: When targetProject is set to "MAVEN", the default output is target/generated-sources/mybatis-generator-->
+    <!--&ndash;&gt;-->
+    <!--<javaModelGenerator targetPackage="com.enniu.data.domain.extmail"-->
+    <!--targetProject="MAVEN">&lt;!&ndash; src/generated/java &ndash;&gt;-->
+    <!--<property name="enableSubPackages" value="true"/>-->
+    <!--<property name="trimStrings" value="true"/>-->
+    <!--</javaModelGenerator>-->
+
+    <!--<sqlMapGenerator targetPackage="com.enniu.data.persistence.extmail"-->
+    <!--targetProject="MAVEN"> &lt;!&ndash; src/generated/resources &ndash;&gt;-->
+    <!--<property name="enableSubPackages" value="true"/>-->
+    <!--</sqlMapGenerator>-->
+
+    <!--<javaClientGenerator type="XMLMAPPER" targetPackage="com.enniu.data.persistence.extmail"-->
+    <!--targetProject="MAVEN"> &lt;!&ndash; src/generated/java &ndash;&gt;-->
+    <!--<property name="enableSubPackages" value="true"/>-->
+    <!--</javaClientGenerator>-->
+
+    <!--<table schema="loansystem" tableName="user_bank"-->
+    <!--domainObjectName="UserBank">-->
+    <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+    <!--</table>-->
+    <!--</context>-->
+</generatorConfiguration>
+

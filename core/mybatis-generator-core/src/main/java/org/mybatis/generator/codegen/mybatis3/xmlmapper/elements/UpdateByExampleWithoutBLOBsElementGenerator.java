@@ -49,8 +49,7 @@ public class UpdateByExampleWithoutBLOBsElementGenerator extends
 
         StringBuilder sb = new StringBuilder();
         sb.append("update "); //$NON-NLS-1$
-        sb.append(introspectedTable
-                .getAliasedFullyQualifiedTableNameAtRuntime());
+        sb.append("  ${tableName}"); // introspectedTable.getAliasedFullyQualifiedTableNameAtRuntime()
         answer.addElement(new TextElement(sb.toString()));
 
         // set up for first column
