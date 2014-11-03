@@ -47,7 +47,7 @@ public class UpdateByExampleSelectiveElementGenerator extends
 
         StringBuilder sb = new StringBuilder();
         sb.append("update "); //$NON-NLS-1$
-        sb.append("  ${tableName}"); // introspectedTable.getAliasedFullyQualifiedTableNameAtRuntime()
+        sb.append(introspectedTable.getAliasedFullyQualifiedTableNameAtRuntime()); // introspectedTable.getAliasedFullyQualifiedTableNameAtRuntime()
         answer.addElement(new TextElement(sb.toString()));
 
         XmlElement dynamicElement = new XmlElement("set"); //$NON-NLS-1$
